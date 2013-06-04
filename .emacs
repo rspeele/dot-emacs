@@ -12,6 +12,8 @@
 (require 'self-color-load)
 (require 'sherbet-mode-load)
 (require 'window-structure)
+(require 'rsp-misc)
+(require 'infix)
 (load "haskell-mode/haskell-site-file")
 
 (defun visibly-distinguish-tabs ()

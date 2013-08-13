@@ -15,6 +15,9 @@
 (require 'rsp-misc)
 (require 'infix)
 (load "haskell-mode/haskell-site-file")
+(autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
+(setq auto-mode-alist
+      (cons '("\\.cs$" . csharp-mode) auto-mode-alist))
 
 (defun visibly-distinguish-tabs ()
   "Change the display of ASCII tab characters for the current buffer."
@@ -27,8 +30,7 @@
 ;; use cmi utils and indentation for sql mode
 (eval-after-load 'sql
   '(progn
-     (require 'sql-indent)
-     (require 'cmi-sql)))
+     (require 'sql-indent)))
 
 (add-hook 'sql-mode-hook 'visibly-distinguish-tabs)
 
@@ -54,6 +56,12 @@
 
 ;; use hex-color-mode with CSS
 (add-hook 'css-mode-hook 'hex-color-mode)
+
+;; don't ask about killing comint interpreters
+(add-hook 'comint-exec-hook
+          (lambda ()
+            (set-process-query-on-exit-flag
+             (get-buffer-process (current-buffer)) nil)))
 
 ;; always use y-or-n-p
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -101,3 +109,7 @@
 
 ;; comment
 (global-set-key [?\C-c ?c ?r] 'comment-or-uncomment-region)
+
+;; shell
+(global-set-key [?\C-c ?s] 'shell)
+

@@ -9,6 +9,8 @@
  '(ediff-diff-options "--binary -w -d")
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(explicit-bash-args (quote ("--login" "-i")))
+ '(explicit-shell-file-name "bash")
  '(global-rainbow-delimiters-mode nil)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)

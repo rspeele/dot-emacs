@@ -17,7 +17,11 @@
 (load "haskell-mode/haskell-site-file")
 (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
 (setq auto-mode-alist
-      (cons '("\\.cs$" . csharp-mode) auto-mode-alist))
+      (append
+       '(("\\.csproj$" . nxml-mode)
+         ("\\.cs$" . csharp-mode)
+         ("/TODO$" . org-mode))
+       auto-mode-alist))
 
 (defun visibly-distinguish-tabs ()
   "Change the display of ASCII tab characters for the current buffer."
